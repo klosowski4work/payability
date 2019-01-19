@@ -1,0 +1,60 @@
+  {
+    "guests": [
+      {
+        "name": "Edward",
+        "age": 30,
+        "language": "PL",
+        "originCountry": "PL",
+        "gender": "male"
+      },
+      {
+        "name": "Jan",
+        "age": 32,
+        "language": "PL",
+        "originCountry": "PL",
+        "gender": "male"
+      },
+      {
+        "name": "Michał",
+        "age": 27,
+        "language": "PL",
+        "originCountry": "PL",
+        "gender": "male"
+      },
+      {
+        "name": "Anna",
+        "age": 25,
+        "language": "PL",
+        "originCountry": "PL",
+        "gender": "female"
+      },
+      {
+        "name": "Piotr",
+        "age": 29,
+        "language": "PL",
+        "originCountry": "PL",
+        "gender": "male"
+      },
+      {
+        "name": "John",
+        "age": 29,
+        "language": "EN",
+        "originCountry": "USA",
+        "gender": "male"
+      },
+      {
+        "name": "Mary",
+        "age": 24,
+        "language": "EN",
+        "originCountry": "USA",
+        "gender": "female"
+      },
+      {
+        "name": "Lois",
+        "age": 29,
+        "language": "EN",
+        "originCountry": "USA",
+        "gender": "female"
+      }
+    ]
+  }
