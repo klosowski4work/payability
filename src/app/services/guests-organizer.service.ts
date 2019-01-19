@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
+import { alternateMerge } from './../common/utils';
+import { Injectable } from '@angular/core';
 
-import { reduce, groupBy } from "lodash";
+import { reduce, groupBy, flatten } from 'lodash';
 
-import { Guest } from "./../interfaces/guest.interface";
-
-import * as MockGuests from "../../../test/fixtures/MockGuests.json";
-import { createSorterByPropertys } from "../common/utils";
+import { Guest } from './../interfaces/guest.interface';
+import { createSorterByPropertys } from '../common/utils';
+import * as MockGuests from '../../../test/fixtures/MockGuests.json';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class GuestsOrganizerService {
   constructor() {}
@@ -17,15 +17,19 @@ export class GuestsOrganizerService {
     return ((MockGuests as unknown) as { guests: Guest[] }).guests;
   }
 
-  groupByGender(guests: Guest[]) {
-    return reduce(
-      groupBy(guests, "gender"),
-      (result, value) => [...result, value],
-      []
-    );
+  alternateByGender(guests: Guest[]) {
+    return alternateMerge(...this._groupByGender(guests));
   }
 
-  sortGuests(guests: Guest[], propertys) {
-    guests.sort(createSorterByPropertys(propertys));
+  sortGuests(guests: Guest[], propertys: string[]) {
+    return guests.sort(createSorterByPropertys(propertys));
+  }
+
+  private _groupByGender(guests: Guest[]) {
+    return reduce(
+      groupBy(guests, 'gender'),
+      (result: any, value: any) => [...result, value],
+      []
+    );
   }
 }

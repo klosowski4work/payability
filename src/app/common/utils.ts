@@ -1,6 +1,6 @@
 import { flatten } from "lodash";
 
-/** 
+/**
  * Merge arrays alternately
  * @param arrays - arrays to merge alternately
  */
@@ -12,7 +12,7 @@ export const alternateMerge = (...arrays) => {
       alternateArray.push(array.shift());
     }
   }
-  return flatten([...alternateArray, ...arrays]);
+  return flatten([alternateArray, ...arrays]);
 };
 
 /**
@@ -20,7 +20,7 @@ export const alternateMerge = (...arrays) => {
  * @return sort function
  */
 export const createSorterByPropertys = (propertys: string[]) => {
-  return (a, b) =>
+  return (a: any, b: any): number =>
     propertys
       .map(property => {
         let dir = 1;
