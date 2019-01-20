@@ -2,5 +2,8 @@
   [ngStyle]="{'width': cssStyle.width, 'height':cssStyle.height}">
   <div class="spot"
     *ngFor="let guest of guests; let i = index; let c = count"
-    [ngStyle]="calcPosition(i,c)">{{i}}</div>
+    [ngStyle]="calcPosition(i,c)">
+    <pk-guest-card [guest]="guest">
+    </pk-guest-card>
+  </div>
 </div>

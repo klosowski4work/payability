@@ -1,4 +1,4 @@
-import { SettingGuestSpotsOption } from "../enums/setting-guest-spots-option.enum";
+import { SettingGuestSpotsOption } from "../../../enums/setting-guest-spots-option.enum";
 
 export interface SpotsOption {
   label: string;

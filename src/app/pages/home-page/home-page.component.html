@@ -1,5 +1,16 @@
-<pk-guests-list-view [guests]="guests"></pk-guests-list-view>
-<pk-setting-guest-spot-options
-  [options]="options"
-  (changeState)="onChangeOptions($event)"
-></pk-setting-guest-spot-options>
+<div class="visualization-container">
+  <pk-round-table-view [guests]="guests"
+    radius="150"></pk-round-table-view>
+</div>
+<div class="options-container">
+  <section>
+    <h3>Lista gości</h3>
+    <pk-guests-list-view [guests]="guests"></pk-guests-list-view>
+  </section>
+  <section>
+    <h3>Sposób rozmieszczenia</h3>
+
+    <pk-setting-guest-spot-options [options]="options"
+      (changeState)="onChangeOptions($event)"></pk-setting-guest-spot-options>
+  </section>
+</div>

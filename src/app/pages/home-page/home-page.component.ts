@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { Guest } from './../../interfaces/guest.interface';
 import { GuestsOrganizerService } from './../../services/guests-organizer.service';
-import { SpotsOption } from 'src/app/interfaces/spots-option.interface';
+import { SpotsOption } from 'src/app/components/setting-guest-spot-options/interfaces/spots-option.interface';
 import { SettingGuestSpotsOption } from 'src/app/enums/setting-guest-spots-option.enum';
 
 @Component({
   selector: 'pk-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.sass']
+  styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
   guests: Guest[];

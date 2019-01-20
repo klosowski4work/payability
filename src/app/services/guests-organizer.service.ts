@@ -11,10 +11,14 @@ import * as MockGuests from '../../../test/fixtures/MockGuests.json';
   providedIn: 'root'
 })
 export class GuestsOrganizerService {
-  constructor() {}
+  constructor() { }
 
   getGuests(): Guest[] {
     return ((MockGuests as unknown) as { guests: Guest[] }).guests;
+  }
+
+  saveGuests(guests: Guest[]) {
+    localStorage.setItem('guests', JSON.stringify(guests));
   }
 
   alternateByGender(guests: Guest[]) {

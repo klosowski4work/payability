@@ -1,0 +1,21 @@
+@import "../../styles/colors";
+
+:host {
+  .card {
+    width: 70px;
+    height: 40px;
+    font-size: 12px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+
+    &--pink {
+      background-color: $pink-color;
+      border-color: darken($pink-color, 20%);
+    }
+    &--blue {
+      background-color: $blue-color;
+      border-color: darken($blue-color, 20%);
+    }
+  }
+}

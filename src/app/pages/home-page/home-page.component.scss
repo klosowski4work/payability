@@ -1,0 +1,17 @@
+:host {
+  * {
+    box-sizing: border-box;
+  }
+  display: flex;
+  flex-direction: row;
+  .options-container {
+    flex: 0 0 30%;
+  }
+  .visualization-container {
+    flex: 1 0 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+  }
+}
