@@ -17,7 +17,7 @@ export class GuestsOrganizerService {
   constructor(private _http: HttpClient) { }
 
   loadGuests(): Guest[] {
-    return JSON.parse(localStorage.getItem('guests'));
+    return JSON.parse(localStorage.getItem('guests')) || [];
   }
 
   saveGuests(guests: Guest[]) {
