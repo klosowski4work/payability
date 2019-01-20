@@ -4,6 +4,7 @@ import { Guest } from './../../interfaces/guest.interface';
 import { GuestsOrganizerService } from './../../services/guests-organizer.service';
 import { SpotsOption } from 'src/app/components/setting-guest-spot-options/interfaces/spots-option.interface';
 import { SettingGuestSpotsOption } from 'src/app/enums/setting-guest-spots-option.enum';
+import { SPOTS_OPTIONS } from './constants/spots-options.constant';
 
 @Component({
   selector: 'pk-home-page',
@@ -12,28 +13,12 @@ import { SettingGuestSpotsOption } from 'src/app/enums/setting-guest-spots-optio
 })
 export class HomePageComponent implements OnInit {
   guests: Guest[];
-  options: SpotsOption[] = [
-    {
-      label: 'Alternate by gender',
-      value: SettingGuestSpotsOption.AlternateByGender,
-      enabled: true
-    },
-    {
-      label: 'Sort by age',
-      value: SettingGuestSpotsOption.SortByAge,
-      enabled: false
-    },
-    {
-      label: 'Sort by language',
-      value: SettingGuestSpotsOption.SortByLanguage,
-      enabled: false
-    }
-  ];
+  options: SpotsOption[] = SPOTS_OPTIONS;
 
-  constructor(private _guestOrganizer: GuestsOrganizerService) {}
+  constructor(private _guestOrganizer: GuestsOrganizerService) { }
 
   ngOnInit() {
-    this.guests = this._guestOrganizer.getGuests();
+    this.guests = this._guestOrganizer.loadGuests();
   }
 
   onChangeOptions(option: SettingGuestSpotsOption) {
@@ -52,5 +37,24 @@ export class HomePageComponent implements OnInit {
     } else {
       this._guestOrganizer.sortGuests(this.guests, options);
     }
+  }
+
+  swapGuests(guestsToSwap: Guest[]) {
+    const {
+      0: firstGuest,
+      1: secondGuest,
+    } = guestsToSwap
+    const firstGuestIndex = this.guests.findIndex((guest) => firstGuest === guest)
+    const secondGuestIndex = this.guests.findIndex((guest) => secondGuest === guest)
+    this.guests[firstGuestIndex] = secondGuest;
+    this.guests[secondGuestIndex] = firstGuest;
+  }
+
+  saveState() {
+    this._guestOrganizer.saveGuests(this.guests);
+  }
+
+  loadState() {
+    this.guests = this._guestOrganizer.loadGuests();
   }
 }

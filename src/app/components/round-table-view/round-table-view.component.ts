@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Guest } from './../../interfaces/guest.interface';
 
@@ -10,8 +10,9 @@ import { Guest } from './../../interfaces/guest.interface';
 export class RoundTableViewComponent implements OnInit {
   @Input() guests: Guest[] = [];
   @Input() radius: number;
+  @Output() swap = new EventEmitter<Guest[]>();
   constructor() { }
-
+  private selectedGuest: Guest;
   ngOnInit() { }
 
   calcPosition(index: number, count: number) {
@@ -29,5 +30,17 @@ export class RoundTableViewComponent implements OnInit {
       width: `${2 * radius}px`,
       height: `${2 * radius}px`
     };
+  }
+
+  onDrag(event: Event, guest: Guest) {
+    this.selectedGuest = guest;
+  }
+
+  onDrop(event: Event, guest: Guest) {
+    this.swap.emit([this.selectedGuest, guest]);
+  }
+
+  allowDrop(event: Event) {
+    event.preventDefault();
   }
 }

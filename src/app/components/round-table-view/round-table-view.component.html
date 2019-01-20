@@ -3,7 +3,11 @@
   <div class="spot"
     *ngFor="let guest of guests; let i = index; let c = count"
     [ngStyle]="calcPosition(i,c)">
-    <pk-guest-card [guest]="guest">
+    <pk-guest-card [guest]="guest"
+      draggable="true"
+      (dragstart)="onDrag($event, guest)"
+      (dragover)="allowDrop($event)"
+      (drop)="onDrop($event, guest)">
     </pk-guest-card>
   </div>
 </div>

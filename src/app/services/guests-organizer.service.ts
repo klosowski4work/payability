@@ -13,8 +13,8 @@ import * as MockGuests from '../../../test/fixtures/MockGuests.json';
 export class GuestsOrganizerService {
   constructor() { }
 
-  getGuests(): Guest[] {
-    return ((MockGuests as unknown) as { guests: Guest[] }).guests;
+  loadGuests(): Guest[] {
+    return JSON.parse(localStorage.getItem('guests'));
   }
 
   saveGuests(guests: Guest[]) {

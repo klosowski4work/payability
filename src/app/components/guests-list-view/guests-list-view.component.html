@@ -1,3 +1,6 @@
 <ul class="guest-list">
   <li *ngFor="let guest of guests">[{{guest.language}}] {{ guest.name }} - {{guest.age}}</li>
 </ul>
+<div class="actions">
+  <ng-content></ng-content>
+</div>
