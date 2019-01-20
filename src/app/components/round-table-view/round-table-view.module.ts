@@ -1,0 +1,10 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RoundTableViewComponent } from './round-table-view.component';
+
+@NgModule({
+  declarations: [RoundTableViewComponent],
+  imports: [CommonModule],
+  exports: [RoundTableViewComponent]
+})
+export class RoundTableViewModule {}

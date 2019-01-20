@@ -1,0 +1,10 @@
+.round-table {
+  position: relative;
+  background-color: burlywood;
+  border-radius: 50%;
+
+  .spot {
+    position: absolute;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
