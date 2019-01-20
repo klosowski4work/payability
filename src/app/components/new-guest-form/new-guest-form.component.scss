@@ -1,0 +1,9 @@
+:host {
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    .ng-invalid {
+      outline-color: red;
+    }
+  }
+}

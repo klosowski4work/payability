@@ -5,13 +5,15 @@ import { reduce, groupBy, flatten } from 'lodash';
 
 import { Guest } from './../interfaces/guest.interface';
 import { createSorterByPropertys } from '../common/utils';
-import * as MockGuests from '../../../test/fixtures/MockGuests.json';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from "rxjs";
+import { CONFIG } from "src/config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuestsOrganizerService {
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   loadGuests(): Guest[] {
     return JSON.parse(localStorage.getItem('guests'));
@@ -29,6 +31,20 @@ export class GuestsOrganizerService {
     return guests.sort(createSorterByPropertys(propertys));
   }
 
+  getGender(guest: Guest): Observable<any> {
+    const searchParams = new URLSearchParams();
+    Object.keys(guest).forEach(key => {
+      if (guest[key]) {
+        searchParams.set(key, guest[key])
+      }
+    });
+    return this._http.get(`${CONFIG.API_URL}?${searchParams.toString()}`);
+  }
+
+  addGuest(guest: Guest) {
+
+  }
+
   private _groupByGender(guests: Guest[]) {
     return reduce(
       groupBy(guests, 'gender'),
@@ -36,4 +52,5 @@ export class GuestsOrganizerService {
       []
     );
   }
+
 }
