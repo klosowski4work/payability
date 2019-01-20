@@ -10,15 +10,16 @@
       <button (click)="saveState()">Zapisz listę</button>
       <button (click)="loadState()">Wczytaj listę</button>
     </pk-guests-list-view>
-
   </section>
   <section>
     <h3>Sposób rozmieszczenia</h3>
     <pk-setting-guest-spot-options [options]="options"
-      (changeState)="onChangeOptions($event)"></pk-setting-guest-spot-options>
+      (changeState)="onChangeOptions($event)">
+      <button (click)="applyOptions()">Zatwierdź</button>
+    </pk-setting-guest-spot-options>
   </section>
 </div>
 <div class="new-guest-container">
-  <pk-new-guest-form>
+  <pk-new-guest-form (addGuest)="addGuest($event)">
   </pk-new-guest-form>
 </div>

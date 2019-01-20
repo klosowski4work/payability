@@ -1,4 +1,4 @@
 
 export const CONFIG = {
-    API_URL: 'https://api.genderize.io/'
+    API_URL: 'https://api.genderize.io'
 }

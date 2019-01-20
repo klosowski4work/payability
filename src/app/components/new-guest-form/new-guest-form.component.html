@@ -1,13 +1,14 @@
 <div class="container">
   <h3>New guest</h3>
-  <form>
+  <form name="form" (ngSubmit)="f.form.valid && onAddGuest()" #f="ngForm"
+    novalidate>
     <div class="form-group">
       <label for="name">Imię</label>
       <input type="text"
         class="form-control"
         id="name"
         name="name"
-        ngModel
+        [(ngModel)]="_model.name"
         required>
     </div>
 
@@ -17,7 +18,7 @@
         class="form-control"
         id="originCountry"
         name="originCountry"
-        ngModel>
+        [(ngModel)]="_model.originCountry">
     </div>
 
     <div class="form-group">
@@ -26,27 +27,20 @@
         class="form-control"
         id="language"
         name="language"
-        ngModel
+        [(ngModel)]="_model.language"
         required>
     </div>
 
     <div class="form-group">
       <label for="age">Wiek</label>
-      <input type="text"
+      <input type="number"
         class="form-control"
         id="age"
-        name="language"
-        ngModel
+        name="age"
+        [(ngModel)]="_model.age"
         required>
     </div>
 
-    <div class="form-group">
-      <label for="gender">Płeć</label>
-      <input type="text"
-        class="form-control"
-        id="gender">
-    </div>
-
-    <button (click)="onSubmit()" type="submit">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 </div>

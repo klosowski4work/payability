@@ -24,7 +24,6 @@ export class HomePageComponent implements OnInit {
   onChangeOptions(option: SettingGuestSpotsOption) {
     const selectedOption = this.options.find(el => el.value === option);
     selectedOption.enabled = !selectedOption.enabled;
-    this.applyOptions();
   }
 
   applyOptions() {
@@ -57,4 +56,9 @@ export class HomePageComponent implements OnInit {
   loadState() {
     this.guests = this._guestOrganizer.loadGuests();
   }
+
+  addGuest(guest: Guest) {
+    this.guests.push(guest);
+  }
+
 }

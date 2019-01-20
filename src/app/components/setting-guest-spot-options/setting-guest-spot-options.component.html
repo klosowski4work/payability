@@ -1,5 +1,7 @@
 <ul>
   <li *ngFor="let option of options">
-    <input type="checkbox" [checked]="option.enabled" (click)="onClick(option.value)"/> {{ option.label }}
+    <input type="checkbox" [checked]="option.enabled"
+      (click)="onClick(option.value)" /> {{ option.label }}
   </li>
 </ul>
+<ng-content></ng-content>

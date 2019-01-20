@@ -1,3 +1,4 @@
+import { GenderizeResponse } from "./../dto/genderize.dto";
 import { alternateMerge } from './../common/utils';
 import { Injectable } from '@angular/core';
 
@@ -31,7 +32,7 @@ export class GuestsOrganizerService {
     return guests.sort(createSorterByPropertys(propertys));
   }
 
-  getGender(guest: Guest): Observable<any> {
+  getGender(guest: Guest): Observable<GenderizeResponse> {
     const searchParams = new URLSearchParams();
     Object.keys(guest).forEach(key => {
       if (guest[key]) {
@@ -39,10 +40,6 @@ export class GuestsOrganizerService {
       }
     });
     return this._http.get(`${CONFIG.API_URL}?${searchParams.toString()}`);
-  }
-
-  addGuest(guest: Guest) {
-
   }
 
   private _groupByGender(guests: Guest[]) {

@@ -1,0 +1,7 @@
+{
+    "/*": {
+        "target": "https://api.genderize.io",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

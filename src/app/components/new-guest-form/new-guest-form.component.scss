@@ -2,8 +2,9 @@
   .form-group {
     display: flex;
     flex-direction: column;
-    .ng-invalid {
-      outline-color: red;
+    .ng-invalid.ng-touched {
+      outline: 2px solid rgba(255,0,0,0.8);
+      outline-offset: -2px;
     }
   }
 }

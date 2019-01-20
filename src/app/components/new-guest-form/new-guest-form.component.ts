@@ -1,7 +1,10 @@
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { take } from 'rxjs/operators';
+
 import { GuestsOrganizerService } from "./../../services/guests-organizer.service";
 import { GuestModel } from "./../../models/GuestModel";
+import { Gender } from "src/app/enums/gender.enum";
 import { Guest } from "./../../interfaces/guest.interface";
-import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'pk-new-guest-form',
@@ -10,7 +13,9 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 })
 export class NewGuestFormComponent implements OnInit {
   private _model: GuestModel;
-  submit: EventEmitter<Guest>;
+
+  @Output()
+  addGuest = new EventEmitter<Guest>();
 
   constructor(private _guestOrganizerService: GuestsOrganizerService) { }
 
@@ -18,13 +23,18 @@ export class NewGuestFormComponent implements OnInit {
     this._model = new GuestModel({});
   }
 
-  onSubmit() {
+  onAddGuest() {
     const guest = this._model;
-    this._guestOrganizerService.getGender(guest)
+    this._guestOrganizerService
+      .getGender(guest)
+      .pipe(
+        take(1)
+      )
       .subscribe(res => {
-        guest.gender = res.gender;
-        this.submit.emit(guest);
+        guest.gender = res.gender as Gender;
+        this.addGuest.emit(guest);
         this._model = new GuestModel({});
       })
   }
 }
+
